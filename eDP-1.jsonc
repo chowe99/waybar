@@ -2,21 +2,30 @@
 {
     "reload_style_on_change": true,
     "margin-top": 4,
-    "width": 2460, // Waybar width
+    "padding": 16,
+    // "width": 1820, // Waybar width
+    "margin": 16,
+    "margin-right": 20,
+    "margin-left": 20,
     "spacing": 4, // Gaps between modules (4px)
     "modules-left": [
         "cpu",
         "temperature",
         "memory",
-        "tray"
     ],
     "modules-center": [
         "mpris"
     ],
     "modules-right": [
         "pulseaudio",
-        "network",
+        // "network",
+        "power-profiles-daemon",
+        "backlight",
+        "keyboard-state",
+        "sway/language",
+        "battery2",
         "clock",
+        "tray"
     ],
     "keyboard-state": {
         "numlock": true,
@@ -37,6 +46,17 @@
         },
         "tooltip-format": " ",
         "tooltip-format-disconnected": ""
+    },
+    "battery": {
+      "bat": "BAT2",
+      "interval": 60,
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-icons": ["", "", "", "", ""],
+      "max-length": 25
     },
 
     "tray": {
@@ -59,8 +79,9 @@
         "interval": 1,
         "thermal-zone": 2,
         "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{icon} {temperatureC}°C",
-        "format-icons": [""]
+        "format-icons": ["", "", ""]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -69,7 +90,8 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "⚠ ",
-        "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "]
+        "format-icons": ["󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+        "on-click": "iwgtk"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
